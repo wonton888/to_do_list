@@ -10,7 +10,11 @@
 
     $app = new Silex\Application();
 
-    $app->get("/", function(){
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path' => __DIR__.'/../views'
+    ));
+
+    $app->get("/", function() use ($app) {
 
 
 
@@ -45,7 +49,7 @@
               </form>
           ";
 
-          return $output;
+          return $app['twig']->render('task.twig');
 
     });
 
