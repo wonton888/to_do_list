@@ -20,17 +20,17 @@
 
     });
 
-    $app->post("/tasks", function() use ($app){
+    $app->post("/task", function() use ($app){
         $task = new Task($_POST['description']);
         $task->save();
         return $app['twig']->render('create_task.html.twig', array('newtask' => $task));
     });
 
-    $app->post("/delete_tasks", function(){
+    $app->post("/delete_tasks", function() use ($app){
 
         Task::deleteAll();
 
-        return $app['twig']->render('delete_task.html.twig');
+        return $app['twig']->render('delete_tasks.html.twig');
 
     });
 
