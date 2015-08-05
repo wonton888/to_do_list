@@ -49,7 +49,7 @@
               </form>
           ";
 
-          return $app['twig']->render('task.twig');
+          return $app['twig']->render('tasks.html.twig', array('tasks' => Task::getAll()));
 
     });
 
