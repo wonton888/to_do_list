@@ -3,6 +3,7 @@
     require_once __DIR__."/../src/Task.php";
 
     session_start();
+
     if (empty($_SESSION['list_of_tasks'])){
         $_SESSION['list_of_tasks'] = array();
     }
@@ -15,10 +16,8 @@
 
       $output = "";
 
-      $all_tasks = Task::getAll();
 
-
-      if (!empty($all_task)){
+      if (!empty(Task::getAll())){
           $output .= "
             <h1>To Do List</h1>
             <p>Here are all your tasks:</p>
@@ -42,7 +41,7 @@
 
           $output .= "
               <form action='/delete_tasks' method='post'>
-                <button type='submit'>delete</button>
+                <button type='submit'>clear</button>
               </form>
           ";
 
